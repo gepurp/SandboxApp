@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import androidx.transition.TransitionInflater
 import com.octo.sandboxapp.R
 import com.octo.sandboxapp.databinding.FragmentMenuBinding
 
@@ -30,5 +31,11 @@ class MenuFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val inflater = TransitionInflater.from(requireContext())
+        exitTransition = inflater.inflateTransition(R.transition.fade)
     }
 }
