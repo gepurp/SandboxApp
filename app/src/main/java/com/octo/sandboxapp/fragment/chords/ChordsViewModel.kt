@@ -1,4 +1,4 @@
-package com.octo.sandboxapp.chords
+package com.octo.sandboxapp.fragment.chords
 
 import android.util.Log
 import androidx.lifecycle.ViewModel

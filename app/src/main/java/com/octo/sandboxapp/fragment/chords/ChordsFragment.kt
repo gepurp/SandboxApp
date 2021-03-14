@@ -1,4 +1,4 @@
-package com.octo.sandboxapp.chords
+package com.octo.sandboxapp.fragment.chords
 
 import android.os.Bundle
 import android.view.LayoutInflater

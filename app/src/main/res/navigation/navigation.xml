@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/menuFragment"
-        android:name="com.octo.sandboxapp.menu.MenuFragment"
+        android:name="com.octo.sandboxapp.fragment.menu.MenuFragment"
         android:label="fragment_menu"
         tools:layout="@layout/fragment_menu" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/chordsFragment"
-        android:name="com.octo.sandboxapp.chords.ChordsFragment"
+        android:name="com.octo.sandboxapp.fragment.chords.ChordsFragment"
         android:label="fragment_chords"
         tools:layout="@layout/fragment_chords" >
         <action

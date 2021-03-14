@@ -1,7 +1,8 @@
-package com.octo.sandboxapp
+package com.octo.sandboxapp.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.octo.sandboxapp.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

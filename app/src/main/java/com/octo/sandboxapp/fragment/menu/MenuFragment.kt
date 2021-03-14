@@ -1,4 +1,4 @@
-package com.octo.sandboxapp.menu
+package com.octo.sandboxapp.fragment.menu
 
 import android.os.Bundle
 import android.util.Log
