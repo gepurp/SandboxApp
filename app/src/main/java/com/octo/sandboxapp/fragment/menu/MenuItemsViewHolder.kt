@@ -5,6 +5,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.octo.sandboxapp.R
 
-class MenuItemsViewHolder(private val itemView: View) : RecyclerView.ViewHolder(itemView) {
+class MenuItemsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val testTextForList = itemView.findViewById(R.id.rv_holder_item) as TextView
 }

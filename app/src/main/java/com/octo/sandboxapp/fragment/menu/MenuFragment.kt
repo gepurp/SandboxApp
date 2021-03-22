@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -48,13 +47,6 @@ class MenuFragment : Fragment() {
 
         Log.i("MenuFragment", "Called ViewModelProvider.get")
         menuViewModel = ViewModelProvider(this).get(MenuViewModel::class.java)
-
-        // Test observer
-        menuViewModel.testClickCount.observe(viewLifecycleOwner, Observer { clickCount ->
-            if (clickCount % 10 == 0) {
-                showToastMessage("You clicked the item ten times")
-            }
-        })
 
         return menuFragmentBinding.root
     }
