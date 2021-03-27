@@ -26,7 +26,8 @@ class MenuFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        val menuFragmentBinding = DataBindingUtil.inflate<FragmentMenuBinding>(
+        val menuFragmentBinding =
+            DataBindingUtil.inflate<FragmentMenuBinding>(
             inflater,
             R.layout.fragment_menu,
             container,
@@ -38,9 +39,18 @@ class MenuFragment : Fragment() {
             it.findNavController().navigate(R.id.action_menuFragment_to_chordsFragment)
         }
 
+        // TODO: Change list setting
         // Creating an instance of RV Adapter class and setting it to RV
         val listOfItems = getListOfMenuItems()
-        val adapterRV = MenuAdapterRV(listOfItems)
+
+        val adapterRV = MenuAdapterRV(object : CustomClickHandler {
+            override fun elementWasClicked(value: String) {
+                showToastMessage(value)
+            }
+        })
+
+        adapterRV.setListOfMenuItems(getListOfMenuItems())
+
         menuFragmentBinding.rvMainMenu.adapter = adapterRV
         // Setting  RV's layout manager equal to LinearLayoutManager
         menuFragmentBinding.rvMainMenu.layoutManager = LinearLayoutManager(requireContext())
@@ -66,30 +76,22 @@ class MenuFragment : Fragment() {
     }
 
     // Creating the list for list of main menu items
-    private fun getListOfMenuItems(): MutableList<String> {
-        return mutableListOf(
-            "Chords",
-            "Intervals",
-            "Circle of fifth",
-            "Scales",
-            "Progressions",
-            "Chords",
-            "Intervals",
-            "Circle of fifth",
-            "Scales",
-            "Chords",
-            "Intervals",
-            "Circle of fifth",
-            "Scales",
-            "Chords",
-            "Intervals",
-            "Circle of fifth",
-            "Scales",
-            "Chords",
-            "Intervals",
-            "Circle of fifth",
-            "Scales"
+    private fun getListOfMenuItems(): MutableList<MenuItemModel> =
+        mutableListOf(
+            MenuItemModel("Chords"),
+            MenuItemModel("Circle of Fifth"),
+            MenuItemModel("Scales"),
+            MenuItemModel("Progression"),
+            MenuItemModel("Intervals"),
+            MenuItemModel("Chords"),
+            MenuItemModel("Circle of Fifth"),
+            MenuItemModel("Scales"),
+            MenuItemModel("Progression"),
+            MenuItemModel("Intervals"),
+            MenuItemModel("Chords"),
+            MenuItemModel("Circle of Fifth"),
+            MenuItemModel("Scales"),
+            MenuItemModel("Progression"),
+            MenuItemModel("Intervals")
         )
-    }
-
 }
