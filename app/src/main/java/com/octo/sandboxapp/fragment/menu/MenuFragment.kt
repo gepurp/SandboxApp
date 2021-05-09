@@ -7,7 +7,9 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.transition.TransitionInflater
 import com.octo.sandboxapp.R
@@ -24,13 +26,13 @@ class MenuFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        val menuFragmentBinding =
+        menuFragmentBinding =
             DataBindingUtil.inflate<FragmentMenuBinding>(
-            inflater,
-            R.layout.fragment_menu,
-            container,
-            false
-        )
+                inflater,
+                R.layout.fragment_menu,
+                container,
+                false
+            )
 
         // Test fragment transition
         menuFragmentBinding.tvTestMenuText.setOnClickListener {
@@ -69,12 +71,6 @@ class MenuFragment : Fragment() {
         ).show()
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val inflater = TransitionInflater.from(requireContext())
-        exitTransition = inflater.inflateTransition(R.transition.fade)
-    }
-
     // Creating the list for list of main menu items
     private fun getListOfMenuItems(): MutableList<MenuItemModel> =
         mutableListOf(
@@ -98,5 +94,12 @@ class MenuFragment : Fragment() {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.overflow_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return NavigationUI.onNavDestinationSelected(
+            item,
+            requireView().findNavController()
+        ) || super.onOptionsItemSelected(item)
     }
 }
