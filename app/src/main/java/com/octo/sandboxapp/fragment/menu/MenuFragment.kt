@@ -2,9 +2,7 @@ package com.octo.sandboxapp.fragment.menu
 
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -58,6 +56,8 @@ class MenuFragment : Fragment() {
         Log.i("MenuFragment", "Called ViewModelProvider.get")
         menuViewModel = ViewModelProvider(this).get(MenuViewModel::class.java)
 
+        setHasOptionsMenu(true)
+
         return menuFragmentBinding.root
     }
 
@@ -94,4 +94,9 @@ class MenuFragment : Fragment() {
             MenuItemModel("Progression"),
             MenuItemModel("Intervals")
         )
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.overflow_menu, menu)
+    }
 }
