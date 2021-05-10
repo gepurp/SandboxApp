@@ -36,7 +36,7 @@ class MenuAdapterRV(
     override fun onViewAttachedToWindow(holder: MenuItemsViewHolder) {
         super.onViewAttachedToWindow(holder)
         holder.itemView.setOnClickListener {
-            val position = holder.adapterPosition
+            val position = holder.absoluteAdapterPosition
             customClickHandler.elementWasClicked(listOfMenuItems[position].title)
         }
     }
